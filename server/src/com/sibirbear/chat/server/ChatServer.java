@@ -54,7 +54,8 @@ public class ChatServer implements ITCPConnectionListener {
 
     private void sentToAllConnections(String value) {
         System.out.println(value);
-        final int count = connections.size();
-        for (int i = 0; i < count; i++) connections.get(i).sendString(value);
+        for (TCPConnection connection : connections) {
+            connection.sendString(value);
+        }
     }
 }
